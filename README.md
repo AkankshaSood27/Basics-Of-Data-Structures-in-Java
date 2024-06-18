@@ -19,12 +19,4 @@ Welcome to the Basics Of Data Structures in Java repository! This repository aim
 ## Requirements
 - Java Development Kit (JDK) 8 or higher.
 
-## License
-This repository is licensed under the MIT License. See [LICENSE](./LICENSE) for more details.
-
-## Acknowledgments
-Special thanks to the Java community for their contributions and support.
-
----
-
 Start exploring and mastering the basics of Java data structures today! Happy coding!
