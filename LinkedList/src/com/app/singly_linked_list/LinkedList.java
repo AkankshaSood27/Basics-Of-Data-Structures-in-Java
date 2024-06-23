@@ -87,7 +87,7 @@ public class LinkedList {
 	public boolean search(Node head, int data) throws LinkedListException {
 		Node temp = head;
 		if (temp == null) {
-			throw new LinkedListException("Element not Present!");
+			throw new LinkedListException("List is empty");
 		}
 		if (temp.getData() == data) {
 			return true;

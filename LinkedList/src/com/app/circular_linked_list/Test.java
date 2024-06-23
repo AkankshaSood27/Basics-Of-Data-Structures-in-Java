@@ -32,12 +32,16 @@ public class Test {
 				try {
 					switch (sc.nextInt()) {
 					case 1:
+						int count=l.display();
+						System.out.println("No of nodes in the list is: "+count);
 						break;
 					case 2:
 						break;
 					case 3:
 						break;
 					case 4:
+						System.out.println("Enter the element and its position: ");
+						l.insertAtPosition(sc.nextInt(), sc.nextInt());
 						break;
 					case 5:
 						break;

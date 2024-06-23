@@ -1,5 +1,7 @@
 package com.app.doubly_linked_list;
 
+import java.util.Stack;
+
 import com.app.linked_list_exception.LinkedListException;
 
 public class DoublyLinkedList {
@@ -128,7 +130,7 @@ public class DoublyLinkedList {
 			head = head.next;
 			// check if there is new first node
 			if (head != null) {
-				
+
 				head.prev = null;
 			}
 			return true;
@@ -157,29 +159,29 @@ public class DoublyLinkedList {
 	}
 
 	public boolean deleteByPosition(int position) throws LinkedListException {
-		
+
 		if (head == null) {
 			throw new LinkedListException("List is Empty!");
 		}
-		
+
 		// in case of invalid position
 		if (head == null && position > 1) {
 			throw new LinkedListException("Invalid Position Entered!");
 		}
-		
-		if(position ==1) {
-			head=head.next;
-			if(head!=null) {
-				head.prev=null;
+
+		if (position == 1) {
+			head = head.next;
+			if (head != null) {
+				head.prev = null;
 			}
 			return true;
 		}
-		
-		Node del=head;
-		
-		//locate the deletable node
-		
-		for(int i=1;i<position-1;i++) {
+
+		Node del = head;
+
+		// locate the deletable node
+
+		for (int i = 1; i < position - 1; i++) {
 			del = del.next;
 			if (del == null) {
 				throw new LinkedListException("Cannot locate the deletabe node!");
@@ -196,5 +198,118 @@ public class DoublyLinkedList {
 		}
 
 		return true;
+	}
+
+	public boolean search(int data) throws LinkedListException {
+		Node temp = head;
+		if (temp == null) {
+			throw new LinkedListException("List is empty");
+		}
+		while (temp != null) {
+			if (temp.data == data) {
+				return true;
+			}
+			temp = temp.next;
+		}
+		throw new LinkedListException("Element not found!");
+	}
+
+	public int deleteFirst() throws LinkedListException {
+
+		if (head == null) {
+			throw new LinkedListException("The list is empty!");
+		}
+		int del = head.data;
+		head = head.next;
+		return del;
+	}
+
+	public int deleteLast() throws LinkedListException {
+
+		if (head == null) {
+			throw new LinkedListException("The list is empty!");
+		}
+		int del = tail.data;
+		if (tail == head) { // List has only one node
+			head = null;
+			tail = null;
+		} else {
+			tail = tail.prev;
+			tail.next = null;
+		}
+		return del;
+	}
+
+	// display the linked list in reverse order using stack- iterative
+	// using head pointer only (using stack)
+	public void displayReverse() {
+		Node temp = head;
+		Stack<Node> stack = new Stack<>();
+
+		while (temp != null) {
+			stack.push(temp);
+			temp = temp.next;
+		}
+
+		while (!stack.isEmpty()) {
+			System.out.print(stack.pop().data + "<->");
+		}
+		System.out.println("NULL");
+	}
+
+	// using tail pointer only (not using stack)
+	public void displayReverseFromTail() throws LinkedListException {
+		Node temp = tail;
+		if (head == tail) {
+			if (tail == null) {
+				throw new LinkedListException("The list is empty!");
+			}
+			System.out.println(head.data);
+		}
+		while (temp != null) {
+			System.out.print(temp.data + "<->");
+			temp = temp.prev;
+		}
+		System.out.println("NULL");
+	}
+
+	// display the linked list in reverse order- recursive
+
+	public void displayReverse(Node head) {
+		Node temp = head;
+		if (temp != null) {
+			displayReverse(temp.next);
+			System.out.print(temp.data+" ");
+		} else {
+			return;
 		}
 	}
+
+	// Reversing the given linked list- iterative
+	public void reverse() throws LinkedListException {
+
+		// in case of first node and list is empty
+		if (head == tail) {
+			if (tail == null) {
+				throw new LinkedListException("The list is empty!");
+			}
+			System.out.println(head.data);
+		}
+
+		Node current = head;
+		Node nextNode = null;
+
+		while (current != null) {
+			nextNode = current.next;
+			current.next = current.prev;
+			current.prev = nextNode;
+			current = nextNode;
+		}
+		current = head;
+		head = tail;
+		tail = current;
+		System.out.println("Head is pointing to: "+head.data+"\n");
+		System.out.println("Tail is pointing to: "+tail.data);
+	}
+
+}
