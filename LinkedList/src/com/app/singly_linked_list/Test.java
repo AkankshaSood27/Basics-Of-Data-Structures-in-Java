@@ -128,6 +128,7 @@ public class Test {
 						break;
 
 					default:
+						System.out.println("Please Enter a valid choice! ");
 						break;
 					}
 				} catch (Exception e) {

@@ -200,7 +200,15 @@ public class CircularLinkedList {
 		return data;
 	}
 	
-	
+	public void displayReverse(Node current,Node head) {
+		
+		if (current.next != head) {
+			displayReverse(current.next,head);
+			
+		}
+			System.out.print(current.data + " ");
+		
+	}
 	
 	public void reverse() {
 		

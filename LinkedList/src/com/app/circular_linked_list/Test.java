@@ -23,7 +23,8 @@ public class Test {
 				System.out.println("1.Display\n" + "2.Insertion at the end of the list\n"
 						+ "3.Insertion at a particular position\n" + "4.Search an element\n" + "5.Deletion by value\n"
 						+ "6.Deletion by position\n" + "7.Delete the last node\n"
-						+ "8.Reversing the given linked list- iterative\n" + "9.Exit\n");
+						+ "8.Reversing the given linked list- iterative\n"
+						+ "9.Display the elements of the linked List in reverse order\n" + "10.Exit\n");
 
 				try {
 					switch (sc.nextInt()) {
@@ -67,6 +68,9 @@ public class Test {
 						l.display();
 						break;
 					case 9:
+						l.displayReverse(l.head,l.head);
+						break;
+					case 10:
 						exit = true;
 						System.out.println("Exitting...\nSuccessfull!");
 						break;
